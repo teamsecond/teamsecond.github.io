@@ -1,0 +1,26 @@
+title: CUBRID TEAMSECOND Blog
+subtitle: CUBRID DBMS Engine Developers
+description: >- # this means to ignore newlines until "baseurl:"
+  TBD
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
+author_logo: cubrid-logo.png
+disqus_shortname: teamsecond  #for comments using disqus
+author: teamsecond
+author_bio: Hello, my name is John Doe.I am an award winning Full Stack Web Developer and UI/UX Javascript specialist.Check out my blog articles, React.JS and Vue.JS UI components at the code laboratory.Feel free to take a look at my latest projects below.Based in London, UK. 
+author_email: "dev2@cubrid.com"
+author_location: South Korea
+author_website_url: "https://www.cubrid.com/"
+
+# social links
+# twitter_username: yourusername
+# github_username:  yourusername
+# facebook_username: yourusername
+# linkedin_username: yourusername
+# behance_username: yourusername
+# instagram_username: yourusername
+# medium_username: yourusername 
+# telegram_username: yourusername
+# dribbble_username: yourusername 
+# flickr_username: yourusername
