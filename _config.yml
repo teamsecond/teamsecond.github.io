@@ -1,5 +1,5 @@
-title: TEAMSECOND Blog
-subtitle: Tech blog of CUBRID DBMS Engine Developers
+title: TEAMSECOND Tech Blog
+subtitle: CUBRID DBMS Engine Developers
 description: >- # this means to ignore newlines until "baseurl:"
   TBD
 baseurl: "" # the subpath of your site, e.g. /blog
