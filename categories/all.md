@@ -15,7 +15,7 @@ permalink: /categories/
     <a name="{{ tag_name | slugize }}"></a>
      {% for post in site.tags[tag_name] %}
     <article class="center">
-      <h6 ><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></h6>
+      <h6 ><a href="{{ site.baseurl }}/{{ post.url }}">{{post.title}}</a></h6>
     </article>
 
 
