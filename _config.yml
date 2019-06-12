@@ -5,6 +5,8 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "/ts-blog" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
+permalink: /:title:output_ext
+
 author_logo: cubrid-logo.png
 disqus_shortname: teamsecond  #for comments using disqus
 author: teamsecond
