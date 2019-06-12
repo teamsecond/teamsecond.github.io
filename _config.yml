@@ -1,16 +1,16 @@
-title: CUBRID TEAMSECOND Blog
-subtitle: CUBRID DBMS Engine Developers
+title: TEAMSECOND Blog
+subtitle: Tech blog of CUBRID DBMS Engine Developers
 description: >- # this means to ignore newlines until "baseurl:"
   TBD
-baseurl: "/ts-blog" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
-permalink: /:title:output_ext
+permalink: /:categories/:title:output_ext
 
 author_logo: cubrid-logo.png
 disqus_shortname: ts-dev  #for comments using disqus
 author: teamsecond
-author_bio: Hello, my name is John Doe.I am an award winning Full Stack Web Developer and UI/UX Javascript specialist.Check out my blog articles, React.JS and Vue.JS UI components at the code laboratory.Feel free to take a look at my latest projects below.Based in London, UK. 
+author_bio: ""
 author_email: "dev2@cubrid.com"
 author_location: South Korea
 author_website_url: "https://www.cubrid.com/"

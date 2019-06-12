@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /categories/cubrid-internal
+permalink: /cubrid-internal
 ---
  
 <h3> Posts by Category : {{ page.title }} </h3>
