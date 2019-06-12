@@ -31,10 +31,7 @@ thumbnail: posts/disk-file-manager/disks.png
 
 > 앞으로 파일은 상기에 서술된 큐브리드의 파일을 이야기하고, OS의 파일을 이야기할 때는 OS파일 혹은 볼륨으로 표현한다.
 
-| ![Volume Overview]({{"/assets/img/posts/disk-file-manager/volume_overview.png"| relative_url}}) |
-|:--:|
-| Volume Overview |
-
+{% include image.html url="posts/disk-file-manager/volume_overview.png" description="Volume Overview" %}
 &nbsp;
 
 ### **디스크 매니저와 파일매니저**
