@@ -5,7 +5,6 @@ author: Jaeeun Kim
 categories:
   - cubrid-internal
 summary:File/Disk Manager internal 1: overview
-thumbnail: posts/disk-file-manager/disks.png
 ---
 
 # **Disk/File Manager**
