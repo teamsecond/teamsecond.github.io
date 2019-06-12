@@ -30,7 +30,7 @@ summary:File/Disk Manager internal 1: overview
 
 > 앞으로 파일은 상기에 서술된 큐브리드의 파일을 이야기하고, OS의 파일을 이야기할 때는 OS파일 혹은 볼륨으로 표현한다.
 
-{% include image.html url="/disk-file-manager/volume_overview.png" description="Volume Overview" %}
+{% include image.html url="disk-file-manager/volume_overview.png" description="Volume Overview" %}
 
 &nbsp;
 
