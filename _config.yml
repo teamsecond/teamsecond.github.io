@@ -8,12 +8,16 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 permalink: /:title:output_ext
 
 author_logo: cubrid-logo.png
-disqus_shortname: teamsecond  #for comments using disqus
+disqus_shortname: ts-dev  #for comments using disqus
 author: teamsecond
 author_bio: Hello, my name is John Doe.I am an award winning Full Stack Web Developer and UI/UX Javascript specialist.Check out my blog articles, React.JS and Vue.JS UI components at the code laboratory.Feel free to take a look at my latest projects below.Based in London, UK. 
 author_email: "dev2@cubrid.com"
 author_location: South Korea
 author_website_url: "https://www.cubrid.com/"
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
 
 # social links
 # twitter_username: yourusername
