@@ -6,12 +6,12 @@ layout: default
 
         <div class="col-lg-8 col-md-4">
             <ul>
-                <div class="row">
                     {% for post in site.posts %}
                     <div class="card blog-post">
+                        {% if post.thumbnail %}
                         <img class="card-img-top" src="{{ site.baseurl }}/assets/img/{{ post.thumbnail }}" alt="{{ post.title }}">
+                        {% endif %}
                         <div class="card-body center">
-                            <img src="{{ site.baseurl }}/assets/img/{{ site.author_logo }}" class="author-profile-img">
                             <h4 class="card-title">{{ post.title }}</h4>
 
                             <h6 class="card-subtitle mb-2 text-muted">{{ post.date | date: "%b %-d, %Y" }}</h6>
@@ -24,7 +24,6 @@ layout: default
                     </div>
 
                     {% endfor %}
-                </div>
             </ul>
         </div>
 
@@ -32,8 +31,7 @@ layout: default
             <div class="card">
                 <div class="card-header"> About {{ site.author }} </div>
                 <div class="card-body text-dark">
-                    <p> devlopr is a rubygem ( Jekyll Theme ) built for Developers. Anyone can create their website and host it freely
-                        like this. All you need is to follow the simple steps in the DOCS !!</p>
+                    <p> TBD </p>
                 </div>
             </div>
             <div class="card">
@@ -43,7 +41,7 @@ layout: default
                     {% for tag in site.categories %} {% capture tag_name %}{{ tag | first }}{% endcapture %}
                     <div id="#{{ tag_name | slugize }}"></div>
                     <li class="tag-head">
-                        <a href="{{ site.baseurl }}/categories/{{ tag_name }}">{{ tag_name }}</a>
+                        <a href="{{ site.baseurl }}/{{ tag_name }}">{{ tag_name }}</a>
                     </li>
                     <a name="{{ tag_name | slugize }}"></a>
 
