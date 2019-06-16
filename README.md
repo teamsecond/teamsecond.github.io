@@ -1,5 +1,9 @@
 # CUBRID Team Second Blog
 
+## Prerequisites
+Please refer the following link:
+- How to install Jekyll: https://jekyllrb.com/docs/installation/
+
 ## Getting Started
 ````
 // install bundler and jekyll on your machine
