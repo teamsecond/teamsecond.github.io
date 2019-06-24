@@ -19,6 +19,8 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
+exclude: [vendor]
+
 # social links
 # twitter_username: yourusername
 # github_username:  yourusername
