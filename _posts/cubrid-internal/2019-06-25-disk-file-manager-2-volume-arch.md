@@ -11,7 +11,7 @@ summary:File/Disk Manager internal 2: architecture
 
 #### - 볼륨헤더(Volume Header)와 섹터테이블(Sector Table) -
 <br/>
- 앞선 포스터 ([Overview](https://teamsecond.github.io/cubrid-internal/disk-file-manager-1-overview.html))에서 볼륨 매니저가 섹터의 예약(reservation)을 관리한다고 이야기하였다. 이번 글에서는 볼륨내의 섹터들이 어떻게 관리되는지에 대한 구체적인 이야기와 이를 위해 볼륨이 어떻게 구성되어 있는지를 다룬다. 여기서 다루어지는 볼륨의 구조는 그대로 non-volitile memory (SSD, HDD 등)에 쓰여진다.
+ 앞선 포스터 ([Overview](https://teamsecond.github.io/cubrid-internal/disk-file-manager-1-overview.html))에서 볼륨 매니저가 섹터의 예약(reservation)을 관리한다고 이야기하였다. 이번 글에서는 볼륨내의 섹터들이 어떻게 관리되는지에 대한 구체적인 이야기와 이를 위해 볼륨이 어떻게 구성되어 있는지를 다룬다. 여기서 다루어지는 볼륨의 구조는 그대로 non-volatile memory (SSD, HDD 등)에 쓰여진다.
 
 <br/>
 ## 볼륨 구조
