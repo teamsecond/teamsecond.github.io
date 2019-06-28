@@ -4,6 +4,7 @@ layout: post
 author: Jaeeun Kim
 categories:
   - cubrid-internal
+draft: true
 summary:File/Disk Manager internal 1: overview
 ---
 
