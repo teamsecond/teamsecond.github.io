@@ -11,7 +11,7 @@ summary: 2 단계 섹터 예약 <br/> (2-Step Sector Reservation)
 
 #### - 2 단계 섹터 예약 (2-Step Sector Reservation) -
 <br/>
- 볼륨 내의 파일이 이전에 예약한 섹터를 모두 사용하여 추가적인 페이지를 할당할 수 없다면 디스크 매니저에게 추가적인 섹터를 요청한다. 디스크 매니저는 이러한 섹터 예약요청을 어떻게 처리할까? [이전글](https://teamsecond.github.io/cubrid-internal/disk-file-manager-2-volume-arch.html) 의 내용으로 예상할 수 있듯이, *disk_stab_iterate_units()*함수를 통해 볼륨 파일의 섹터테이블을 순회하며 가용한 섹터가 있는지 확인하고 해당 비트를 set 해줌으로써 섹터를 예약했음을 표시할 수 있을 것이다. 기본적으로 섹터 예약이란 이처럼 디스크에 있는 섹터테이블을 변경시키는 것은 맞지만, 큐브리드는 이에 앞서 한 단계 과정을 더 수행한다. 이번 글에서는 섹터 예약이 어떻게 이루어지는 자세히 알아본다.
+ 볼륨 내의 파일이 이전에 예약한 섹터를 모두 사용하여 추가적인 페이지를 할당할 수 없다면 디스크 매니저에게 추가적인 섹터를 요청한다. 디스크 매니저는 이러한 섹터 예약요청을 어떻게 처리할까? [이전 글](https://teamsecond.github.io/cubrid-internal/disk-file-manager-2-volume-arch.html) 의 내용으로 예상할 수 있듯이, *disk_stab_iterate_units()*함수를 통해 볼륨 파일의 섹터테이블을 순회하며 가용한 섹터가 있는지 확인하고 해당 비트를 set 해줌으로써 섹터를 예약했음을 표시할 수 있을 것이다. 기본적으로 섹터 예약이란 이처럼 디스크에 있는 섹터테이블을 변경시키는 것은 맞지만, 큐브리드는 이에 앞서 한 단계 과정을 더 수행한다. 이번 글에서는 섹터 예약이 어떻게 이루어지는 자세히 알아본다.
 
 > 언제 섹터 예약 요청이 발생할까? 
 >
@@ -60,7 +60,7 @@ disk_reserve_sectors ()
 - ***disk_extend()***: 디스크캐시를 참고하여 가용 섹터가 부족하다면 사전예약 전에 먼저 추가적인 공간을 확보한다. 이때 공간을 확보(확장, 추가)하면 확장한 볼륨에서 사전예약(*disk_reserve_from_cache_volume()*)을 시도한다.
 - ***disk_volume_expand()***: 추가적인 공간확보방법 중 하나로 먼저 볼륨을 확장한다. 이때 확장하는 볼륨은 최근 추가한 마지막 볼륨이다. 한 볼륨을 최대크기로 확장하고 나서야 새로운 볼륨을 추가하므로, 확장가능한 볼륨은 항상 하나이다.
 - ***disk_add_volume()***: 볼륨을 최대 크기로 확장했음에도 가용 섹터가 부족하다면 새로운 볼륨을 추가한다.
-- ***disk_reserve_sectors_in_volume()***: step 2 - 실제적인 예약표시과정으로 step 1에서 약속된 내용으로 단순히 섹터테이블을 수정한다([이전글](https://teamsecond.github.io/cubrid-internal/disk-file-manager-2-volume-arch.html)).
+- ***disk_reserve_sectors_in_volume()***: step 2 - 실제적인 예약표시과정으로 step 1에서 약속된 내용으로 단순히 섹터테이블을 수정한다([이전 글](https://teamsecond.github.io/cubrid-internal/disk-file-manager-2-volume-arch.html)).
 
 <br/>
 ## Sector Reservation in details
@@ -249,15 +249,15 @@ context.purpose = purpose;
 
 현재 볼륨들의 상태로는 섹터 요청을 처리할 수 없으므로 OS로부터 공간을 더 할당받아야 한다. 이러한 작업은 OS File I/O를 포함하기 때문에 비용이 많이 드는 작업이다. 그동안 사전예약을 시작할 때 잡았던 캐시뮤텍스(*disk_Cache->temp/perm_purpose_info.extend_info*)를 해제해줘야 확장중에도 기존 상태의 섹터들만으로도 처리할 수 있는 트랜잭션들이 작업을 진행할 수 있을 것이다. 때문에 확장뮤텍스(*mutex_extend*) 를 잡기 전에 캐시뮤텍스는 해제해준다. 하지만 캐시뮤텍스를 풀고 확장뮤텍스를 잡는 사이에 다른트랜잭션이 섹터 요청을 처리하며 이미 충분히 공간을 확장했을 수도 있으므로, 다시 한 번 캐시뮤텍스를 잡고 여전히 가용 섹터가 부족한지 확인한다. 가용 섹터가 확보되어 있다면 예약요청을 처리 후 종료하고, 여전하다면 확실히 확장이 필요한 상황으로 판단하고 캐시뮤텍스를 푼 후 볼륨 확장(*disk_extend()*)에 들어간다.
 
-> 캐시뮤텍스를 잡은 상태에서 확장뮤텍스를 잡고 상태를 확인한 후, 캐시뮤텍스를 풀 순 없을까?
+> 캐시뮤텍스를 잡은 상태에서 확장뮤텍스를 잡고 상태를 확인한 후 캐시뮤텍스를 풀 순 없을까?
 >
 > 확장과정에서 캐시 상태변경을 위해 캐시뮤텍스를 잡는 경우가 있다. 따라서 이처럼 확장뮤텍스->캐시뮤텍스의 순서를 지켜주지 않으면 탐지 불가능한 교착상태가 발생할 수 있다.
 
-**5.  볼륨을 확장과 사전예약**
+**5.  볼륨 확장과 사전예약**
 
 섹터요청을 처리할 수 있는 양의 섹터를 확보한다. 볼륨마다 볼륨헤더에 볼륨의 최대확장할 수 있는 크기가 정해져 있으므로 최댓값까지만 확장을 시도한다. 확장 후에는 확장한 볼륨에 사전예약을 요청한다. 이때, 이전에 공간이 부족하면 시도도 하지 않았던 것과는 다르게 확장된 볼륨에서 가능한 만큼 사전예약을 수행한다. 따라서 예약한 만큼 *reserve_context->n_cache_reserve_remaining*값이 감소한다. 만약 모든 요청을 처리했다면 종료되고, 아직 남았다면 새로운 볼륨을 추가한다.
 
-**6. 새로운 볼륨 추가와 사전예약**
+**6. 볼륨 추가와 사전예약**
 
 남은 모든 섹터의 요청이 처리될 수 있을 때까지 새로운 볼륨을 추가(*disk_add_volume()*)하고 사전예약(*disk_reserve_from_cache_volume()*)을 반복한다.
 
@@ -265,7 +265,7 @@ context.purpose = purpose;
 
 **7. 사전예약 정보를 바탕으로 실제 섹터테이블을 변경한다.**
 
-앞서 3, 4, 5, 6에서 사전예약한 정보를 바탕으로 뮤텍스들을 푼 후 실제 예약 (섹터테이블 수정)을 수행한다. 사전예약 과정(*disk_reserve_from_cache_volume()*)에서 어떤 볼륨에서 몇개의 섹터를 예약할지를 결정한 상태 (*context->cache_vol_reserve[]*)이고, 이 과정에서 race condition 문제는 모두 해결해 두었으므로 이 정보를 바탕으로 볼륨별로 실제 예약을 수행한다 (*disk_reserve_sectors_in_volume()*). 볼륨내의 어떤 섹터를 예약할지는 사전예약 시 결정해두지 않았으므로, 각 볼륨의 섹터테이블을 순회하며 사전예약 수만큼 가용 섹터 비트를 set 해준다. 해당 과정은 STAB Cursor, *disk_stab_iterate_units()*등을 사용하는 것으로 [이전 글]()을 참고하길 바란다. 
+앞서 3, 4, 5, 6에서 사전예약한 정보를 바탕으로 뮤텍스들을 푼 후 실제 예약 (섹터테이블 수정)을 수행한다. 사전예약 과정(*disk_reserve_from_cache_volume()*)에서 어떤 볼륨에서 몇개의 섹터를 예약할지를 결정한 상태 (*context->cache_vol_reserve[]*)이고, 이 과정에서 race condition 문제는 모두 해결해 두었으므로 이 정보를 바탕으로 볼륨별로 실제 예약을 수행한다 (*disk_reserve_sectors_in_volume()*). 볼륨내의 어떤 섹터를 예약할지는 사전예약 시 결정해두지 않았으므로, 각 볼륨의 섹터테이블을 순회하며 사전예약 수만큼 가용 섹터 비트를 set 해준다. 해당 과정은 STAB Cursor, *disk_stab_iterate_units()*등을 사용하는 것으로 [이전 글](https://teamsecond.github.io/cubrid-internal/disk-file-manager-2-volume-arch.html)을 참고하길 바란다. 
 
 > volheader->hint_allocset
 >
@@ -296,13 +296,17 @@ context.purpose = purpose;
 > 관련 함수:
 >
 > file_destroy()
+>
 > disk_unreserve_ordered_sectors()
+>
 > disk_unreserve_ordered_sectors_without_csect()
+>
 > disk_unreserve_sectors_from_volume()
+>
 > disk_stab_unit_unreserve()
 
 <br/>
-## 그 밖에 주의해야 할 것들
+## 그 밖에
 
 ---
 #### 임시목적 볼륨과 로깅 (Logging)
