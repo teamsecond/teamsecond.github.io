@@ -18,9 +18,23 @@ author_website_url: "https://www.cubrid.com/"
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-assets
+  - jekyll-codepen
 
 exclude: [vendor]
 
+markdown: kramdown
+highlighter: rouge
+
+codepen:
+  theme: 11473
+  height: 300
+  preview: false
+  default_tab: result
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 # social links
 # twitter_username: yourusername
 # github_username:  yourusername
