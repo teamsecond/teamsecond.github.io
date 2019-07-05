@@ -1,5 +1,5 @@
 # coding: utf-8
-require 'jekyll'
+#!/usr/bin/env ruby
 
 # Extend string to allow for bold text.
 class String
@@ -25,6 +25,5 @@ namespace "build" do
 end
 
 task :clean do
-  puts 'Cleaning up _site...'.bold
-  Jekyll::Commands::Clean.process({})
+  system "bundle exec jekyll clean"
 end

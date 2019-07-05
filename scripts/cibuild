@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -e # halt script on error
 
-bundle install
-
 # deployment
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then 
 	BRANCH = $TRAVIS_BRANCH;
