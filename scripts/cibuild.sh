@@ -4,7 +4,7 @@ set -e # halt script on error
 
 # deployment
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then 
-	BRANCH = $TRAVIS_BRANCH
+	BRANCH=$TRAVIS_BRANCH
 
 # pull request
 else
@@ -16,7 +16,7 @@ else
 		rake build:dev
 		# bundle exec htmlproofer ./_site --disable-external
 	else
-		BRANCH = $TRAVIS_PULL_REQUEST_BRANCH
+		BRANCH=$TRAVIS_PULL_REQUEST_BRANCH
 	fi
 	
 fi
