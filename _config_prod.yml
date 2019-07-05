@@ -1,0 +1,5 @@
+baseurl: "/"
+url: "https://teamsecond.github.io"
+show_drafts: false
+future: false
+unpublished: false

@@ -1,16 +1,16 @@
 # frozen_string_literal: true
-
 source "https://rubygems.org"
 
-gem "jekyll"
-gem "bundler"
+gem "bunlder"
 gem "rake"
-gem "html-proofer"
+gem "jekyll"
 
 gem 'jekyll-sitemap'
 gem 'jekyll-feed'
 gem 'jekyll-assets'
 
-gem 'kramdown'
-gem 'rouge'
+gem "kramdown"
+gem "html-proofer"
+
+gem "rouge"
 gem "jekyll-codepen"
