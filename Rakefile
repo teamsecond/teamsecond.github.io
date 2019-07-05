@@ -25,10 +25,5 @@ namespace "build" do
 end
 
 task :clean do
-<<<<<<< HEAD
   system "bundle exec jekyll clean"
-=======
-  puts 'Cleaning up _site...'.bold
-  Jekyll::Commands::Clean.process({})
->>>>>>> upstream/source
 end
