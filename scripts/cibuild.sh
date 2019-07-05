@@ -14,7 +14,7 @@ else
 		
 	elif [ "$TRAVIS_BRANCH" == "source" ]; then # source
 		rake build:dev
-		# bundle exec htmlproofer ./_site --disable-external
+		bundle exec htmlproofer ./_site --disable-external
 	else
 		BRANCH=$TRAVIS_PULL_REQUEST_BRANCH
 	fi
