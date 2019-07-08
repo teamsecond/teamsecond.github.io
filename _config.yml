@@ -15,11 +15,7 @@ author_email: "dev2@cubrid.com"
 author_location: South Korea
 author_website_url: "https://www.cubrid.com/"
 
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-assets
-  - jekyll-codepen
+plugins: [jekyll-feed, jekyll-sitemap, jekyll-codepen, jekyll-assets, bootstrap, autoprefixer-rails]
 
 exclude: 
   - vendor
@@ -42,14 +38,3 @@ codepen:
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-# social links
-# twitter_username: yourusername
-# github_username:  yourusername
-# facebook_username: yourusername
-# linkedin_username: yourusername
-# behance_username: yourusername
-# instagram_username: yourusername
-# medium_username: yourusername 
-# telegram_username: yourusername
-# dribbble_username: yourusername 
-# flickr_username: yourusername
