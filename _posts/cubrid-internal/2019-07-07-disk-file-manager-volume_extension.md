@@ -107,7 +107,7 @@ summary: Volume Extension
 
 2. 확장을 위한 IO연산 (*fileio_expand_to()*)
 
-앞서의 글들에서 다루었던  영구목적의 데이터를 위한 볼륨 연산은 모두 로깅과정을 동반했다. 기존에는 각 연산에 대한 로깅을 언급하지 않다가 여기서 언급한 이유는 볼륨 확장의 경우에는 (nested) top action[[1, 2](#Reference)]으로 수행되어야 함을 이야기하기 위해서이다. Nested top action이란 간단히 이야기하면 해당 액션을 일으킨 트랜잭션의 커밋/롤백과는 독립적으로 commit되는 트랜잭션의 연산을 말한다. 이는 nested top action을 포함한 트랜잭션이 롤백되어도 이미 commit된 nested top action은 롤백되지 않는 다는 것을 의미한다. 볼륨 확장이 nested top action이 아니라면 볼륨확장을 발생시킨 트랜잭션이 커밋될 때까지 다른 트랜잭션은 공간부족으로 모두 멈추게 되거나, 별개의 공간을 추가로 확보해야할 것이다. 큐브리드는 이러한 (nested) top action을 시스템 오퍼레이션 인터페이스(*log_sysop_start(), log_sysop_end()*)를 통해 제공한다.
+앞서의 글들에서 다루었던  영구목적의 데이터를 위한 볼륨 연산은 모두 로깅과정을 동반했다. 기존에는 각 연산에 대한 로깅을 언급하지 않다가 여기서 언급한 이유는 볼륨 확장의 경우에는 (nested) top action[[1](#ref_1)][[2](#ref_2)]으로 수행되어야 함을 이야기하기 위해서이다. Nested top action이란 간단히 이야기하면 해당 액션을 일으킨 트랜잭션의 커밋/롤백과는 독립적으로 commit되는 트랜잭션의 연산을 말한다. 이는 nested top action을 포함한 트랜잭션이 롤백되어도 이미 commit된 nested top action은 롤백되지 않는 다는 것을 의미한다. 볼륨 확장이 nested top action이 아니라면 볼륨확장을 발생시킨 트랜잭션이 커밋될 때까지 다른 트랜잭션은 공간부족으로 모두 멈추게 되거나, 별개의 공간을 추가로 확보해야할 것이다. 큐브리드는 이러한 (nested) top action을 시스템 오퍼레이션 인터페이스(*log_sysop_start(), log_sysop_end()*)를 통해 제공한다.
 
 시스템 오퍼레이션을 통한 로깅을 완료한 후에는 *fileio_expand_to()*를 통해 실제 IO연산을 수행한다. 기본 값의 페이지를 만들어 필요한 양 만큼의 페이지를 OS의 시스템콜(system call)들을 이용해 디스크에 적는다. 볼륨의 OS파일을 확장할 때 (혹은 아래에서처럼 새로운 볼륨을 생성할때) 영구타입볼륨의 경우에는 모든 페이지를 초기화하여 디스크에 적고(*fileio_initialize_pages()*), 임시타입볼륨의 경우에는 마지막 페이지만을 초기화하여 디스크에 적는다. 임시타입볼륨은 리커버리의 대상이 되지 않으므로 볼륨내의 페이지가 쓰레기값으로 초기화되어 있어도 상관 없으므로 크기확장을 위한 write만을 수행한다. 반면에 영구타입볼륨은 모든 페이지를 초기화 해줘야 한다.
 
@@ -151,4 +151,8 @@ summary: Volume Extension
 ---
 [1] Liskov, Barbara, and Robert Scheifler. "Guardians and actions: Linguistic support for robust, distributed programs." Proceedings of the 9th ACM SIGPLAN-SIGACT symposium on Principles of programming languages. ACM, 1982.
 
+<a id="ref_1"></a>
+
 [2] Mohan, C., et al. "ARIES: a transaction recovery method supporting fine-granularity locking and partial rollbacks using write-ahead logging." *ACM Transactions on Database Systems (TODS)* 17.1 (1992): 94-162.
+
+<a id="ref_2"></a>
