@@ -52,6 +52,23 @@
 - Install Jekyll: https://jekyllrb.com/docs/installation/
 
 ### Testing the blog locally
+
+#### Using script files
+**Windows**
+```
+./install.bat # run only at the first time  
+./start.bat
+// http://127.0.0.1:4000
+```
+
+**Linux**
+```
+./install.sh # run only at the first time 
+./start.sh
+// http://127.0.0.1:4000
+```
+
+#### Using bundle command
 ```
 bundle install
 bundle exec jekyll serve --watch
@@ -59,6 +76,23 @@ bundle exec jekyll serve --watch
 ```
 
 ### Deploying the blog publicly
+
+#### Using script files
+**Windows**
+```
+./install.bat # run only at the first time  
+./start.bat 0.0.0.0 <port>
+// http://0.0.0.0:<port>
+```
+
+**Linux**
+```
+./install.sh # run only at the first time 
+./start.sh -h 0.0.0.0 -p <port>
+// http://0.0.0.0:<port>
+```
+
+#### Using bundle command
 ```
 bundle install
 bundle exec jekyll serve --host 0.0.0.0 --port <port> --watch

@@ -2,7 +2,7 @@ title: TEAMSECOND Tech Blog
 subtitle: CUBRID DBMS Engine Developers
 description: >- # this means to ignore newlines until "baseurl:"
   TBD
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 permalink: /:categories/:title:output_ext
@@ -18,9 +18,30 @@ author_website_url: "https://www.cubrid.com/"
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-assets
+  - jekyll-codepen
 
-exclude: [vendor]
+exclude: 
+  - vendor
+  - "Gemfile*"
+  - "Rakefile"
+  - "*.sh"
+  - "*.bat"
+  - .travis.yml
+  - README.md
 
+markdown: kramdown
+highlighter: rouge
+
+codepen:
+  theme: 11473
+  height: 300
+  preview: false
+  default_tab: result
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 # social links
 # twitter_username: yourusername
 # github_username:  yourusername
