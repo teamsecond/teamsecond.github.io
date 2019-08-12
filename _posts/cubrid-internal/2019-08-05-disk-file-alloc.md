@@ -29,11 +29,11 @@ summary: 큐브리드 파일 페이지 할당 <br/> (CUBRID File Page Allocation
 
 ####  **File Extendible Data Format**
 
-구조는 단순하다. 헤더와 아이템(Item, 데이터)의 셋(set)으로 이루어진 컴포넌트들의 리스트(Singly Linked List)이다. 이를 도식화 해보면 다음과 같다.
+구조는 단순하다. 헤더와 아이템(Item, 데이터)의 셋(set)으로 이루어진 컴포넌트들의 리스트(Singly Linked List)이다. 이를 도식화 해보면 다음과 같다. 
 
 {% include image.html url="disk-file-manager/file_extendible_data.png" description="File Extendible Data Format"%}
 
-헤더(*FILE_EXTDATA_HEADER*)는 헤더가 포함된 컴포넌트의 아이템의 갯수(*n_items*), 아이템의 크기(*size_of_item*), 컴포넌트의 최대 크기(*max_size*), 다음 컴포넌트로의 링크(*vpid_next*)를 가지고 있다. 여기서 각 변수들은 모두 헤더가 포함된 컴포넌트내의 정보이다. 즉, 전체 아이템의 갯수를 알기 위해서는 모든 컴포넌트의 헤더를 순회하며 *n_item*을 모두 더해야 한다. [이전 글](./disk-file-manager-file-arch)에서 살펴본 여러 페이지에 흩어져 있는 파일 테이블들이 연결되어 있게 해주는 구조가 이 File Extendible Data이다. 페이지 ID(*vpid*)를 통해 연결되므로 첫 컴포넌트는 디스크 페이지내의 어떤 위치에 들어가도 상관 없지만, 이 후의 컴포넌트들은 각 디스크 페이지의 첫 부분에 컴포넌트가 존재해야한다. 
+헤더(*FILE_EXTDATA_HEADER*)는 헤더가 포함된 컴포넌트의 아이템의 갯수(*n_items*), 아이템의 크기(*size_of_item*), 컴포넌트의 최대 크기(*max_size*), 다음 컴포넌트로의 링크(*vpid_next*)를 가지고 있다. 여기서 각 변수들은 모두 헤더가 포함된 컴포넌트내의 정보이다. 즉, 전체 아이템의 갯수를 알기 위해서는 모든 컴포넌트의 헤더를 순회하며 *n_item*을 모두 더해야 한다. [이전 글의 파일테이블 구조](./disk-file-manager-file-arch)에서 살펴본 여러 페이지에 흩어져 있는 파일 테이블들이 연결되어 있게 해주는 구조가 이 File Extendible Data이다. 페이지 ID(*vpid*)를 통해 연결되므로 첫 컴포넌트는 디스크 페이지내의 어떤 위치에 들어가도 상관 없지만, 이 후의 컴포넌트들은 각 디스크 페이지의 첫 부분에 컴포넌트가 존재해야한다. 
 
 #### **File Extendible Data Operations**
 
