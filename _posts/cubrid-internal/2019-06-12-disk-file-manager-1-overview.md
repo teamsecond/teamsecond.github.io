@@ -101,16 +101,20 @@ summary:File/Disk Manager internal 1: overview
 
 ---
 
- 이번 글에서는 디스크매니저와 파일매니저에서 쓰이는 개념들에 대하여 정리하였다. 앞으로의 글에서는 이를 바탕으로 어떤 방식으로 이들이 관리되는지 자세히 알아본다. 이후 다룰 내용들은 다음과 같으며, 내용이 더 추가될 수 있다.
+ 이번 글에서는 디스크매니저와 파일매니저에서 쓰이는 개념들에 대하여 정리하였다. 앞으로의 글에서는 이를 바탕으로 어떤 방식으로 파일과 볼륨이 관리되는지 자세히 알아본다. 이후의 내용은 다음과 같다.
 
-##### To be posted
 
-1. 볼륨은 어떻게 관리될까? (볼륨헤더, 섹터테이블)
-2. 섹터 예약은 어떻게 이루어질까? (섹터 예약/해제, 디스크캐시)
-3. 볼륨의 공간이 부족할 경우는? (볼륨 확장, 볼륨 추가, 볼륨 포맷)
-4. 파일은 어떻게 관리될까? (파일헤더, 파일테이블, extendible data)
-5. 영구파일내의 페이지할당은 어떻게 이루어질까? (파일 생성, 페이지 할당/해제)
-6. 임시파일내의 페이지할당은 어떻게 이루어질까? (임시파일생성,  페이지 할당/해제, temp cache)
+- [볼륨은 어떻게 관리될까?](./disk-file-manager-2-volume-arch.html)
+
+- [섹터 예약은 어떻게 이루어질까?](./disk-file-manager-sector-reservation.html)
+
+- [섹터 예약시 볼륨에 섹터가 부족하면?](./disk-file-manager-volume_extension.html)
+
+- [큐브리드 파일은 어떻게 관리될까?](./disk-file-manager-file-arch.html)
+
+- [페이지 할당은 어떻게 이루어질까?](./disk-file-manager-file-alloc.html)
+
+- [파일의 생성과 제거](./disk-file-manager-file-creation.html)
 
 
 
